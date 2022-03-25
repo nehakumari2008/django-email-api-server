@@ -45,5 +45,5 @@ def server_detect(request):
         data = json.loads(request.body)
         result = detect(text=data['text'])
         return HttpResponse(result)
-
-
+    else:
+        return HttpResponse("Please send POST request")

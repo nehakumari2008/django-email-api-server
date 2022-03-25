@@ -1,11 +1,11 @@
 ### Send POST request with json body
-#POST https://agile-cliffs-49290.herokuapp.com/api/mail/send/
-#Content-Type: application/json
-#
-#{
-#  "username": "Lallulal",
-#  "send_to": "nehamahto132@gmail.com"
-#}
+POST https://agile-cliffs-49290.herokuapp.com/api/mail/send/
+Content-Type: application/json
+
+{
+  "username": "Lallulal",
+  "send_to": "nehamahto132@gmail.com"
+}
 ###
 
 ### Send POST request with json body
@@ -28,5 +28,18 @@ Content-Type: application/json
 
 {
     "text": "You have purchased ABC for Rs 1000. The remaining balance in your account is Rs 15,345.00"
+}
+###
+
+###
+GET https://agile-cliffs-49290.herokuapp.com/api/server/
+###
+
+###
+POST https://agile-cliffs-49290.herokuapp.com/api/server/detect/
+Content-Type: application/json
+
+{
+  "text": "You have purchased ABC for Rs 1000. The remaining balance in your account is Rs 15,345.00"
 }
 ###
