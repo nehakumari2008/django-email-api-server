@@ -16,13 +16,10 @@ def send_email(username, send_to):
     }
     msg.send(fail_silently=False)
 
-def detect(text):
-    regex = r"Rs\ ?[+-]?[0-9]{1,3}(?:,?[0-9])*(?:\.[0-9]{1,2})?"
-
+def detect(text, regex="Rs\ ?[+-]?[0-9]{1,3}(?:,?[0-9])*(?:\.[0-9]{1,2})?"):
     amount = re.findall(regex, text)
-    dict = {"status":"ok", "count": len(amount), "amount":amount}
-
-    json_object = json.dumps(dict, indent=4)
+    processed_data = {"status":"ok", "count": len(amount), "amount":amount}
+    json_object = json.dumps(processed_data, indent=4)
     return json_object
 
 
@@ -43,7 +40,13 @@ def server_info(request):
 def server_detect(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        result = detect(text=data['text'])
-        return HttpResponse(result)
+        if 'text' and 'regex' in data:
+            result = detect(text=data['text'], regex=data['regex'])
+            return HttpResponse(result)
+        elif 'text' in data:
+            result = detect(text=data['text'])
+            return HttpResponse(result)
+        else:
+            return HttpResponse("Please send text and optionally regex pattern to process")
     else:
         return HttpResponse("Please send POST request")
