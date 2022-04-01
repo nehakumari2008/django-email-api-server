@@ -60,7 +60,7 @@ Content-Type: application/json
 
 {
   "label": "You have purchased ABC for Rs 1000. The remaining balance in your account is Rs 15,345.00",
-  "regex": "Chagana Kumari"
+  "regex": "\\w+"
 }
 ###
 
@@ -68,11 +68,11 @@ Content-Type: application/json
 GET http://localhost:8000/api/regex/4/delete/
 ###
 
-POST http://localhost:8000/api/regex/5/edit/
+POST http://localhost:8000/api/regex/22/edit/
 Content-Type: application/json
 
 {
-  "label": "You have purchased ABC for Rs 10. The remaining balance in your account is Rs 15,345.00",
-  "regex": "Chagan Bail"
+  "label": "amount",
+  "regex": "\\w"
 }
 ###
